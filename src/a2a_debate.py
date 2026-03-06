@@ -4,6 +4,7 @@ A2A Debate — Punto de entrada principal.
 Dos modos de ejecución:
   uv run python -m src.a2a_debate            → Debate interactivo en terminal
   uv run python -m src.a2a_debate --server   → Servidor FastAPI en localhost:8000
+  Abre: http://localhost:8000/docs para ver los endpoints A2A y probar el debate vía API REST.
 """
 
 import json
