@@ -395,90 +395,6 @@ async def main():
 
 asyncio.run(main())
 ```
-
----
-
-## ❓ Preguntas Frecuentes
-
-### **P: ¿Necesito registrarme en FastAPI o algo similar?**
-
-**R:** No. FastAPI es solo una librería Python para crear servidores HTTP. No requiere registro ni cuenta. Solo necesitas:
-- Python instalado
-- La librería FastAPI instalada (vía `pip install -r requirements.txt`)
-- Nada más
-
-### **P: ¿Tengo que usar siempre el servidor?**
-
-**R:** No. El servidor es **opcional**. 
-- **Modo interactivo:** Sin servidor, ejecutas localmente
-- **Modo servidor:** Si quieres que otros programas accedan vía HTTP
-
-Usa modo interactivo el 90% de las veces.
-
-### **P: ¿Necesito registrarme en OpenAI?**
-
-**R:** Sí, pero es **gratis** (primeros $5 USD de crédito).
-1. Ve a https://platform.openai.com/signup
-2. Crea cuenta con email
-3. Ve a API keys: https://platform.openai.com/api/keys
-4. Copia tu clave en `.env`
-
-### **P: ¿Por qué cada agente tiene su propio "handler"?**
-
-**R:** Para que cada uno tenga su propio prompt y personalidad:
-- Sacerdote: "Eres un sacerdote reflexivo..."
-- Crítico: "Eres un crítico de cine mordaz..."
-- Etc.
-
-Si todos usaran el mismo prompt, todos responderían igual.
-
-### **P: ¿Cómo agrego un nuevo agente?**
-
-**R:** Tres pasos:
-1. Agrega su Agent Card en `agent_cards.py`
-2. Agrega su handler en `handlers.py`
-3. Agrégalo al grafo en `grafo.py` y regístralo en `a2a_debate.py`
-
-### **P: ¿Qué es el "protocolo A2A"?**
-
-**R:** Es un estándar para que agentes de IA se descubran y comuniquen entre sí. Este proyecto implementa una versión simplificada:
-- **Descubrimiento:** `/agent-card.json` (qué puede hacer cada agente)
-- **Comunicación:** `message/send` (cómo enviar tareas)
-- **Tareas:** `submitted → working → completed` (tracking)
-
-En producción, cada agente sería un servidor independiente.
-
-### **P: ¿Puedo cambiar el modelo de LLM?**
-
-**R:** Sí, en `src/config.py`:
-
-```python
-# Cambiar de gpt-4o-mini a gpt-4o (más poderoso, más caro)
-llm = ChatOpenAI(
-    model="gpt-4o",  # Cambiar aquí
-    ...
-)
-```
-
-### **P: ¿Dónde se guarda el resultado del debate?**
-
-**R:** En `resultado_debate.json` con esta estructura:
-
-```json
-{
-  "tema": "La película Oppenheimer...",
-  "timestamp": "2026-03-05T10:30:00",
-  "agentes_participantes": ["⛪ Agente Sacerdote", "🎬 Agente Crítico de Cine", ...],
-  "fases": {
-    "opinion_sacerdote": "...",
-    "critica_cine": "...",
-    "contra_critica": "...",
-    "veredicto": "..."
-  },
-  "total_tasks": 4
-}
-```
-
 ---
 
 ## 🛠️ Desarrollo y Extensión
@@ -546,9 +462,7 @@ Este proyecto es de educación. Úsalo libremente.
 
 ## Author
 
-**Joaquin D. Olivero**
-
-Software Engineer | AI Engineer
+**Joaquín Olivero** ~ Software & AI Engineer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/JoaquinOlivero)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pulpoide)
